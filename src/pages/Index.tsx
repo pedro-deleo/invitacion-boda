@@ -36,7 +36,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10 text-center text-white animate-fade-in mb-48">
           <div className="mb-8">
-            <h1 className="font-rouge text-9xl md:text-10xl mb-4">
+            <h1 className="font-rouge text-9xl md:text-8xl mb-4">
               Reyna & Pedro
             </h1>
             <div className="w-24 h-0.5 bg-wedding-secondary mx-auto mb-6"></div>
