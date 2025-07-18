@@ -37,20 +37,20 @@ All colors MUST be HSL.
     --ring: 340 65% 55%;
 
     /* Wedding-specific design tokens */
-    --wedding-primary: 340 65% 55%;
+    --wedding-primary: 127 29% 62%;
     --wedding-primary-light: 340 45% 75%;
-    --wedding-secondary: 45 90% 70%;
-    --wedding-background: 350 100% 98%;
-    --wedding-text: 340 20% 15%;
+    --wedding-secondary: 127 14% 48%;    
+    --wedding-background: 132 54% 95%;
+    --wedding-text: 127 14% 44%;
     --wedding-text-light: 340 10% 45%;
     
     /* Gradients */
-    --gradient-romantic: linear-gradient(135deg, hsl(var(--wedding-primary-light)), hsl(var(--wedding-secondary)));
-    --gradient-soft: linear-gradient(180deg, hsl(var(--wedding-background)), hsl(var(--secondary)));
-    
+    --gradient-romantic: linear-gradient(135deg, hsl(var(--wedding-primary)), hsl(var(--wedding-secondary)));
+    --gradient-soft: linear-gradient(180deg, hsl(var(--wedding-background)), hsl(var(--wedding-primary)));
+
     /* Shadows */
-    --shadow-romantic: 0 10px 30px -10px hsl(var(--wedding-primary) / 0.2);
-    --shadow-soft: 0 4px 20px -4px hsl(var(--wedding-primary) / 0.1);
+    --shadow-romantic: 0 10px 30px -10px hsl(var(--wedding-primary) / 0.18);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--wedding-primary) / 0.12);
     
     /* Animations */
     --transition-elegant: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);

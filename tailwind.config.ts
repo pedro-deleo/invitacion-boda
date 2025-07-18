@@ -73,7 +73,9 @@ export default {
 			},
 			fontFamily: {
 				serif: ['Playfair Display', 'serif'],
-				sans: ['Inter', 'sans-serif']
+				sans: ['Inter', 'sans-serif'],
+				'rouge': ['"Rouge Script"', 'cursive']
+
 			},
 			backgroundImage: {
 				'gradient-romantic': 'var(--gradient-romantic)',

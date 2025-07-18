@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/wedding-hero.jpg";
-import mobileHeroImage from "@/assets/portrait.png";
+import bg1Mobile from "@/assets/bg-1.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
@@ -28,26 +28,25 @@ const Index = () => {
     <div className="min-h-screen bg-wedding-background">
       {/* Hero Section */}
       <section
-        className="relative h-screen flex items-center justify-center bg-cover bg-center"
+        className="relative h-screen flex items-end justify-center bg-cover bg-center"
         style={{
-          backgroundImage: `url(${isMobile ? mobileHeroImage : heroImage})`,
+          backgroundImage: `url(${isMobile ? bg1Mobile : heroImage})`,
         }}
       >
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative z-10 text-center text-white animate-fade-in">
+        <div className="relative z-10 text-center text-white animate-fade-in mb-48">
           <div className="mb-8">
-            <Heart className="w-16 h-16 mx-auto mb-6 text-wedding-secondary animate-romantic-pulse" />
-            <h1 className="font-serif text-6xl md:text-8xl font-bold mb-4">
+            <h1 className="font-rouge text-9xl md:text-10xl mb-4">
               Reyna & Pedro
             </h1>
             <div className="w-24 h-0.5 bg-wedding-secondary mx-auto mb-6"></div>
-            <p className="text-xl md:text-2xl font-light tracking-wide">
+            <p className="font-rouge text-4xl md:text-2xl  font-bold tracking-wide">
               Nuestra Boda
             </p>
           </div>
           <Badge
             variant="secondary"
-            className="px-6 py-3 text-lg font-medium bg-white/10 backdrop-blur-sm border-white/20"
+            className="px-6 py-3 text-wedding-text text-lg font-medium bg-white backdrop-blur-sm border-white/20"
           >
             Abril 26, 2026
           </Badge>
@@ -138,16 +137,14 @@ const Index = () => {
         {/* Timeline */}
         <section className="mb-20 animate-fade-in-up">
           <h2 className="font-serif text-4xl font-bold text-wedding-text text-center mb-12">
-            Wedding Day Timeline
+            Cronograma del Día
           </h2>
           <div className="space-y-6">
             {[
-              { time: "3:30 PM", event: "Recibimiento" },
               {
                 time: "4:00 PM",
                 event: "Ceremonia de casamiento en la iglesia",
               },
-              { time: "4:45 PM", event: "Fotografias en Palacio de Gobierno" },
               { time: "7:00 PM", event: "Boda Civil" },
               { time: "8:00 PM", event: "Recepción" },
             ].map((item, index) => (
@@ -197,7 +194,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="bg-wedding-text text-white py-12 text-center">
-        <Heart className="w-8 h-8 mx-auto mb-4 text-wedding-secondary" />
+        <Heart className="w-8 h-8 mx-auto mb-4 text-wedding-primary" />
         <p className="text-lg font-light">With love, Reyna & Pedro</p>
       </footer>
     </div>
