@@ -194,6 +194,7 @@ const Index = () => {
         </section>
       </div>
 
+
       {/* Footer */}
       <footer className="bg-wedding-text text-white py-12 text-center">
         <Heart className="w-8 h-8 mx-auto mb-4 text-wedding-secondary" />
