@@ -184,7 +184,7 @@ const Index = () => {
                 size="lg"
                 className="bg-white text-wedding-primary hover:bg-white/90 font-semibold px-8 py-3 text-lg"
               >
-                {rsvpSubmitted ? "Thank you!" : "Confirma tu asistencia aquí"}
+                {rsvpSubmitted ? "Thank you!" : "Confirma aquí"}
               </Button>
               <p className="text-white/80 mt-4 text-sm">
                 Porfavor response tu asistencia antes del 1 Marzo del 2026.
