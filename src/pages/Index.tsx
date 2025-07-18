@@ -58,7 +58,7 @@ const Index = () => {
         {/* Save the Date */}
         <section className="text-center mb-20 animate-fade-in-up">
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-wedding-text mb-6"></h2>
-          <p className="text-xl font-rouge text-wedding-text-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-4xl font-rouge text-wedding-text-light max-w-2xl mx-auto leading-relaxed">
             "Todo lo hizo hermoso en su tiempo" Eclesiastes 3:11
           </p>
         </section>
