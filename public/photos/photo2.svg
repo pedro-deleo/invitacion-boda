@@ -1,7 +1,0 @@
-<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="300" fill="#f0f8f4"/>
-  <rect x="50" y="50" width="300" height="200" fill="#d4e8dd" stroke="#b0d4c4" stroke-width="2"/>
-  <polygon points="200,80 180,130 220,130" fill="#84c4a4"/>
-  <rect x="180" y="130" width="40" height="60" fill="#a484c4"/>
-  <text x="200" y="220" text-anchor="middle" font-family="serif" font-size="16" fill="#558b73">Ceremonia religiosa</text>
-</svg>

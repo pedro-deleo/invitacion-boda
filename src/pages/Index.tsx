@@ -180,7 +180,7 @@ const Index = () => {
               Álbum de Fotos
             </h2>
             <p className="text-wedding-text-light max-w-2xl mx-auto">
-              Recuerdos especiales de nuestro gran día
+              Recuerdos especiales de nuestro viaje juntos hasta ahora.
             </p>
           </div>
           
@@ -200,9 +200,9 @@ const Index = () => {
                   >
                     <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 group">
                       <CardContent className="p-0">
-                        <div className="aspect-[4/3] overflow-hidden rounded-lg">
+                        <div className="aspect-[1] overflow-hidden rounded-lg">
                           <img
-                            src={`/photos/photo${index + 1}.svg`}
+                            src={`/photos/photo-${index + 1}.jpg`}
                             alt={`Foto de boda ${index + 1}`}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />

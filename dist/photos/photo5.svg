@@ -1,7 +1,0 @@
-<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="300" fill="#f4f8ff"/>
-  <rect x="50" y="50" width="300" height="200" fill="#d4e4f8" stroke="#a4c4e8" stroke-width="2"/>
-  <circle cx="200" cy="130" r="40" fill="#84a4c4"/>
-  <path d="M 180 110 L 200 90 L 220 110 L 200 150 Z" fill="#a4c4e8"/>
-  <text x="200" y="220" text-anchor="middle" font-family="serif" font-size="16" fill="#55738b">Primer baile</text>
-</svg>
