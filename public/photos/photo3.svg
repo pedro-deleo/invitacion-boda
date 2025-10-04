@@ -1,0 +1,7 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f8f0f8"/>
+  <rect x="50" y="50" width="300" height="200" fill="#e8d4e8" stroke="#d4b0d4" stroke-width="2"/>
+  <circle cx="200" cy="120" r="25" fill="#c484c4"/>
+  <path d="M 175 95 Q 200 70 225 95 Q 200 120 175 95" fill="#e8a4d4"/>
+  <text x="200" y="220" text-anchor="middle" font-family="serif" font-size="16" fill="#8b5573">Intercambio de anillos</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f8fff4"/>
+  <rect x="50" y="50" width="300" height="200" fill="#edf8e4" stroke="#d4e8c4" stroke-width="2"/>
+  <rect x="130" y="80" width="140" height="80" fill="#c4e8a4"/>
+  <circle cx="160" cy="100" r="6" fill="#84a464"/>
+  <circle cx="180" cy="100" r="6" fill="#84a464"/>
+  <circle cx="200" cy="100" r="6" fill="#84a464"/>
+  <circle cx="220" cy="100" r="6" fill="#84a464"/>
+  <circle cx="240" cy="100" r="6" fill="#84a464"/>
+  <text x="200" y="220" text-anchor="middle" font-family="serif" font-size="16" fill="#5b8b37">Decoraciones florales</text>
+</svg>

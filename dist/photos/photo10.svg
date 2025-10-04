@@ -1,0 +1,10 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#fff8ff"/>
+  <rect x="50" y="50" width="300" height="200" fill="#f8e8f8" stroke="#e8c8e8" stroke-width="2"/>
+  <circle cx="150" cy="120" r="15" fill="#d4a4d4"/>
+  <circle cx="250" cy="120" r="15" fill="#d4a4d4"/>
+  <path d="M 165 120 Q 200 100 235 120" stroke="#c484c4" stroke-width="3" fill="none"/>
+  <circle cx="200" cy="140" r="8" fill="#a464a4"/>
+  <rect x="180" y="160" width="40" height="20" fill="#c4a4c4"/>
+  <text x="200" y="220" text-anchor="middle" font-family="serif" font-size="16" fill="#8b558b">Momento especial</text>
+</svg>

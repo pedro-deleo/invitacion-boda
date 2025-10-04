@@ -1,0 +1,11 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f4f4ff"/>
+  <rect x="50" y="50" width="300" height="200" fill="#e4e4f8" stroke="#c4c4e8" stroke-width="2"/>
+  <circle cx="200" cy="100" r="20" fill="#a4a4d4"/>
+  <path d="M 160 140 L 240 140 L 220 160 L 180 160 Z" fill="#c4c4e8"/>
+  <circle cx="170" cy="130" r="5" fill="#8484c4"/>
+  <circle cx="190" cy="130" r="5" fill="#8484c4"/>
+  <circle cx="210" cy="130" r="5" fill="#8484c4"/>
+  <circle cx="230" cy="130" r="5" fill="#8484c4"/>
+  <text x="200" y="220" text-anchor="middle" font-family="serif" font-size="16" fill="#5555a4">Invitados bailando</text>
+</svg>

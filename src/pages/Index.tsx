@@ -7,10 +7,18 @@ import {
   Mail,
   Phone,
   Church,
+  Camera,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import heroImage from "@/assets/wedding-hero.jpg";
 import bg1Mobile from "@/assets/bg-1.png";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -161,6 +169,52 @@ const Index = () => {
                 <span className="text-wedding-text">{item.event}</span>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Photo Album Section */}
+        <section className="mb-20 animate-fade-in-up">
+          <div className="text-center mb-12">
+            <Camera className="w-8 h-8 mx-auto mb-4 text-wedding-primary" />
+            <h2 className="font-serif text-4xl font-bold text-wedding-text mb-4">
+              Álbum de Fotos
+            </h2>
+            <p className="text-wedding-text-light max-w-2xl mx-auto">
+              Recuerdos especiales de nuestro gran día
+            </p>
+          </div>
+          
+          <div className="relative max-w-5xl mx-auto">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {Array.from({ length: 10 }, (_, index) => (
+                  <CarouselItem 
+                    key={index} 
+                    className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+                  >
+                    <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 group">
+                      <CardContent className="p-0">
+                        <div className="aspect-[4/3] overflow-hidden rounded-lg">
+                          <img
+                            src={`/photos/photo${index + 1}.svg`}
+                            alt={`Foto de boda ${index + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-16" />
+              <CarouselNext className="hidden md:flex -right-16" />
+            </Carousel>
           </div>
         </section>
 
