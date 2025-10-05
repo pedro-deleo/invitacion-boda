@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Heart,
   Calendar,
@@ -26,6 +26,17 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Index = () => {
   const [rsvpSubmitted, setRsvpSubmitted] = useState(false);
   const isMobile = useIsMobile();
+
+  // Carousel API for auto-scroll
+  const [carouselApi, setCarouselApi] = useState<any>(null);
+
+  useEffect(() => {
+    if (!carouselApi) return;
+    const interval = setInterval(() => {
+      carouselApi.scrollNext();
+    }, 3500); // Change slide every 3.5 seconds
+    return () => clearInterval(interval);
+  }, [carouselApi]);
 
   const handleRsvpClick = () => {
     setRsvpSubmitted(true);
@@ -186,6 +197,7 @@ const Index = () => {
           
           <div className="relative max-w-5xl mx-auto">
             <Carousel
+              setApi={setCarouselApi}
               opts={{
                 align: "start",
                 loop: true,
@@ -200,7 +212,7 @@ const Index = () => {
                   >
                     <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 group">
                       <CardContent className="p-0">
-                        <div className="aspect-[1] overflow-hidden rounded-lg">
+                        <div className="aspect-[.8] overflow-hidden rounded-lg">
                           <img
                             src={`/photos/photo-${index + 1}.jpg`}
                             alt={`Foto de boda ${index + 1}`}
