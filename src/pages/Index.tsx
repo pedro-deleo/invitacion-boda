@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Carousel,
   CarouselContent,
@@ -24,66 +25,158 @@ import bg1Mobile from "@/assets/bg-1.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
-  const [rsvpSubmitted, setRsvpSubmitted] = useState(false);
+  const [isRsvpModalOpen, setIsRsvpModalOpen] = useState(false);
+  const [activeRsvpFormUrl, setActiveRsvpFormUrl] = useState("");
+  const [isRsvpLocked, setIsRsvpLocked] = useState(false);
+  const [rsvpError, setRsvpError] = useState("");
   const isMobile = useIsMobile();
+  const [photoCount, setPhotoCount] = useState(0);
+
+  const rsvpLinks: Record<string, string> = {
+    a: "https://docs.google.com/forms/d/e/1FAIpQLSdx9B9TgXQO_gHDpZnmsAJIBFLJ4MvxRy6bcJccpwxnXkmo2w/viewform?embedded=true",
+    b: "https://docs.google.com/forms/d/e/1FAIpQLSf5TRGjQp4tN4U8OlSv3ZyzlsxJrHbWxrnvEfVW072wjmOCDQ/viewform?embedded=true",
+  };
 
   // Carousel API for auto-scroll
   const [carouselApi, setCarouselApi] = useState<any>(null);
 
   useEffect(() => {
-    if (!carouselApi) return;
+    let isActive = true;
+
+    const imageExists = (src: string) =>
+      new Promise<boolean>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = src;
+      });
+
+    const loadPhotoCount = async () => {
+      const maxPhotos = 200;
+      let count = 0;
+
+      // Photos are expected to be sequentially named: photo-1, photo-2, etc.
+      for (let i = 1; i <= maxPhotos; i++) {
+        const exists = await imageExists(`/photos/photo-${i}.jpg`);
+        if (!exists) break;
+        count = i;
+      }
+
+      if (isActive) {
+        setPhotoCount(count);
+      }
+    };
+
+    void loadPhotoCount();
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!carouselApi || photoCount <= 1) return;
     const interval = setInterval(() => {
       carouselApi.scrollNext();
     }, 3500); // Change slide every 3.5 seconds
     return () => clearInterval(interval);
-  }, [carouselApi]);
+  }, [carouselApi, photoCount]);
+
+  useEffect(() => {
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]")
+    );
+
+    if (!sections.length) return;
+
+    sections.forEach((section, index) => {
+      section.style.transitionDelay = `${index * 140}ms`;
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("reveal-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -12% 0px",
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => {
+        section.style.transitionDelay = "";
+      });
+      observer.disconnect();
+    };
+  }, []);
 
   const handleRsvpClick = () => {
-    setRsvpSubmitted(true);
-    setTimeout(() => setRsvpSubmitted(false), 3000);
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code")?.trim().toLowerCase() ?? "";
+    const targetUrl = rsvpLinks[code];
+
+    if (!targetUrl) {
+      setRsvpError("No encontramos tu codigo de invitacion. Revisa tu enlace.");
+      return;
+    }
+
+    setRsvpError("");
+    setIsRsvpLocked(true);
+    setActiveRsvpFormUrl(targetUrl);
+    setIsRsvpModalOpen(true);
   };
 
   return (
     <div className="min-h-screen bg-wedding-background">
       {/* Hero Section */}
       <section
-        className="relative h-screen flex items-end justify-center bg-cover bg-center"
+        className="reveal-on-scroll relative h-screen flex items-start justify-center bg-cover bg-center pt-20 md:pt-28"
+        data-reveal
         style={{
           backgroundImage: `url(${isMobile ? bg1Mobile : heroImage})`,
         }}
       >
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative z-10 text-center text-white animate-fade-in mb-48">
+        <div className="relative z-10 text-center text-white animate-fade-in">
           <div className="mb-8">
-            <h1 className="font-rouge text-8xl md:text-8xl mb-4">
-              Reyna & Pedro
-            </h1>
+            <p className="font-rouge text-8xl md:text-8xl leading-none">Reyna</p>
+            <p className="font-rouge text-8xl md:text-8xl leading-none">&</p>
+            <p className="font-rouge text-8xl md:text-8xl mb-4 leading-none">Pedro</p>
             <div className="w-24 h-0.5 bg-wedding-secondary mx-auto mb-6"></div>
             <p className="font-rouge text-4xl md:text-2xl  font-bold tracking-wide">
               Nuestra Boda
             </p>
           </div>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 md:bottom-14">
           <Badge
             variant="secondary"
-            className="px-6 py-3 text-wedding-text text-lg font-medium bg-white backdrop-blur-sm border-white/20"
+            className="px-6 py-3 text-wedding-text text-lg font-medium bg-wedding-background backdrop-blur-sm border-white/20"
           >
             Abril 26, 2026
           </Badge>
         </div>
       </section>
 
+      {/* Invitation Section */}
+      <section className="reveal-on-scroll text-center py-14 px-6" data-reveal>
+        <p className="font-rouge text-6xl md:text-7xl font-bold text-wedding-text-light leading-tight md:leading-none max-w-3xl mx-auto">
+          <span className="block md:inline">Te invitamos a</span>{" "}
+          <span className="block md:inline">celebrar nuestra boda</span>
+        </p>
+      </section>
+
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-16">
-        {/* Save the Date */}
-        <section className="text-center mb-20 animate-fade-in-up">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-wedding-text mb-6"></h2>
-          <p className="text-4xl font-rouge text-wedding-text-light max-w-2xl mx-auto leading-relaxed">
-            "Todo lo hizo hermoso en su tiempo" Eclesiastes 3:11
-          </p>
-        </section>
-
         {/* Wedding Details */}
-        <section className="grid md:grid-cols-2 gap-8 mb-20">
+        <section className="reveal-on-scroll grid md:grid-cols-2 gap-8 mb-20" data-reveal>
           <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
             <CardContent className="p-8">
               <div className="flex items-center mb-6">
@@ -95,7 +188,7 @@ const Index = () => {
               <div className="space-y-3 text-wedding-text-light">
                 <div className="flex items-center">
                   <Clock className="w-5 h-5 mr-3" />
-                  <span>4:00 PM</span>
+                  <span>3:45 PM</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="w-5 h-5 mr-3" />
@@ -129,7 +222,7 @@ const Index = () => {
               <div className="space-y-3 text-wedding-text-light">
                 <div className="flex items-center">
                   <Clock className="w-5 h-5 mr-3" />
-                  <span>8:00 PM</span>
+                  <span>7:00 PM</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="w-5 h-5 mr-3" />
@@ -154,18 +247,23 @@ const Index = () => {
         </section>
 
         {/* Timeline */}
-        <section className="mb-20 animate-fade-in-up">
+        <section className="reveal-on-scroll mb-20" data-reveal>
           <h2 className="font-serif text-4xl font-bold text-wedding-text text-center mb-12">
             Cronograma del Día
           </h2>
           <div className="space-y-6">
             {[
               {
-                time: "4:00 PM",
-                event: "Ceremonia de casamiento en la iglesia",
+                time: "3:45 PM",
+                event: "Ceremonia de casamiento",
               },
-              { time: "7:00 PM", event: "Boda Civil" },
-              { time: "8:00 PM", event: "Recepción" },
+              { time: "7:00 PM", event: "Recepción" },
+              { time: "7:45 PM", event: "Oración y palabra" },
+              { time: "8:00 PM", event: "Canto especial" },
+              { time: "8:10 PM", event: "Agradecimiento" },
+              { time: "8:30 PM", event: "Cena" },
+              { time: "9:40 PM", event: "Dinámicas" },
+              { time: "11:00 PM", event: "Tiempo de alabanza" },
             ].map((item, index) => (
               <div
                 key={index}
@@ -184,7 +282,7 @@ const Index = () => {
         </section>
 
         {/* Photo Album Section */}
-        <section className="mb-20 animate-fade-in-up">
+        <section className="reveal-on-scroll mb-20" data-reveal>
           <div className="text-center mb-12">
             <Camera className="w-8 h-8 mx-auto mb-4 text-wedding-primary" />
             <h2 className="font-serif text-4xl font-bold text-wedding-text mb-4">
@@ -205,7 +303,7 @@ const Index = () => {
               className="w-full"
             >
               <CarouselContent className="-ml-2 md:-ml-4">
-                {Array.from({ length: 10 }, (_, index) => (
+                {Array.from({ length: photoCount }, (_, index) => (
                   <CarouselItem 
                     key={index} 
                     className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
@@ -231,7 +329,7 @@ const Index = () => {
         </section>
 
         {/* RSVP Section */}
-        <section className="text-center mb-20 animate-fade-in-up">
+        <section className="reveal-on-scroll text-center mb-20" data-reveal>
           <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic">
             <CardContent className="p-12">
               <Heart className="w-12 h-12 mx-auto mb-6 text-white" />
@@ -239,29 +337,60 @@ const Index = () => {
                 Confirma tu asistencia
               </h2>
               <p className="text-white/90 mb-8 text-lg">
-                Queremos celebrar nuestra boda contigo. Porfavor confirma tu
+                Queremos celebrar nuestra boda contigo. Confirma tu
                 asistencia haciendo clic en el botón de abajo.
               </p>
               <Button
                 onClick={handleRsvpClick}
                 size="lg"
+                disabled={isRsvpLocked}
                 className="bg-white text-wedding-primary hover:bg-white/90 font-semibold px-8 py-3 text-lg"
               >
-                {rsvpSubmitted ? "Thank you!" : "Confirma aquí"}
+                {isRsvpLocked ? "Gracias" : "Confirma aquí"}
               </Button>
+              {rsvpError ? (
+                <p className="text-red-100 mt-4 text-sm font-medium">{rsvpError}</p>
+              ) : null}
               <p className="text-white/80 mt-4 text-sm">
-                Porfavor response tu asistencia antes del 1 Marzo del 2026.
+                Responder tu asistencia antes del 30 de marzo, 2026.
               </p>
             </CardContent>
           </Card>
         </section>
+
+        {/* Versiculo */}
+        <section className="reveal-on-scroll text-center mb-20" data-reveal>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-wedding-text mb-6"></h2>
+          <p className="text-5xl md:text-6xl font-rouge font-bold text-wedding-text-light max-w-2xl mx-auto leading-relaxed">
+            "Todo lo hizo hermoso en su tiempo"
+          </p>
+          <p className="text-4xl font-rouge font-bold text-wedding-text-light max-w-2xl mx-auto leading-relaxed"> Eclesiastes 3:11</p>
+        </section>
       </div>
+
+      <Dialog open={isRsvpModalOpen} onOpenChange={setIsRsvpModalOpen}>
+        <DialogContent className="w-[95vw] max-w-4xl p-0 overflow-hidden bg-wedding-background">
+          <DialogHeader className="p-4 pb-0">
+            <DialogTitle>Confirmación de Asistencia</DialogTitle>
+          </DialogHeader>
+          {activeRsvpFormUrl ? (
+            <iframe
+              src={activeRsvpFormUrl}
+              title="Formulario RSVP"
+              className="w-full h-[80vh] border-0"
+              loading="lazy"
+            >
+              Cargando...
+            </iframe>
+          ) : null}
+        </DialogContent>
+      </Dialog>
 
 
       {/* Footer */}
       <footer className="bg-wedding-text text-white py-12 text-center">
-        <Heart className="w-8 h-8 mx-auto mb-4 text-wedding-primary" />
-        <p className="text-lg font-light">With love, Reyna & Pedro</p>
+        <Heart className="w-8 h-8 mx-auto mb-4 text-red-500 fill-current" />
+        <p className="text-sm md:text-base font-light">Hecho con amor por  Reyna & Pedro</p>
       </footer>
     </div>
   );
