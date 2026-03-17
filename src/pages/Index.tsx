@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import {
   Heart,
-  Calendar,
   MapPin,
   Clock,
   Mail,
@@ -135,21 +134,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-wedding-background">
-      {/* Hero Section */}
+      {/* Intro Section */}
       <section
         className="reveal-on-scroll relative h-screen flex items-start justify-center bg-cover bg-center pt-20 md:pt-28"
         data-reveal
         style={{
-          backgroundImage: `url(${isMobile ? bg1Mobile : heroImage})`,
+          backgroundImage: `url(${isMobile ? bg1Mobile : bg1Mobile})`,
         }}
       >
-        <div className="relative z-10 text-center text-white animate-fade-in">
+        <div className="absolute top-0 left-1/2 z-10 w-full -translate-x-1/2 pt-6 md:pt-10 text-center text-white animate-fade-in">
           <div className="mb-8">
-            <p className="font-rouge text-8xl md:text-8xl leading-none">Reyna</p>
-            <p className="font-rouge text-8xl md:text-8xl leading-none">&</p>
-            <p className="font-rouge text-8xl md:text-8xl mb-4 leading-none">Pedro</p>
-            <div className="w-24 h-0.5 bg-wedding-secondary mx-auto mb-6"></div>
-            <p className="font-rouge text-4xl md:text-2xl  font-bold tracking-wide">
+            <p className="font-rouge text-8xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-[9rem] leading-none">Reyna</p>
+            <p className="font-rouge text-8xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-[9rem] leading-none">&</p>
+            <p className="font-rouge text-8xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-[9rem] leading-none">Pedro</p>
+            <div className="w-24 h-0.5 bg-wedding-secondary mx-auto"></div>
+            <p className="font-rouge text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide">
               Nuestra Boda
             </p>
           </div>
@@ -244,41 +243,6 @@ const Index = () => {
               </div>
             </CardContent>
           </Card>
-        </section>
-
-        {/* Timeline */}
-        <section className="reveal-on-scroll mb-20" data-reveal>
-          <h2 className="font-serif text-4xl font-bold text-wedding-text text-center mb-12">
-            Cronograma del Día
-          </h2>
-          <div className="space-y-6">
-            {[
-              {
-                time: "3:45 PM",
-                event: "Ceremonia de casamiento",
-              },
-              { time: "7:00 PM", event: "Recepción" },
-              { time: "7:45 PM", event: "Oración y palabra" },
-              { time: "8:00 PM", event: "Canto especial" },
-              { time: "8:10 PM", event: "Agradecimiento" },
-              { time: "8:30 PM", event: "Cena" },
-              { time: "9:40 PM", event: "Dinámicas" },
-              { time: "11:00 PM", event: "Tiempo de alabanza" },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center p-4 bg-card rounded-lg shadow-soft"
-              >
-                <Badge
-                  variant="outline"
-                  className="min-w-fit mr-4 border-wedding-primary text-wedding-primary"
-                >
-                  {item.time}
-                </Badge>
-                <span className="text-wedding-text">{item.event}</span>
-              </div>
-            ))}
-          </div>
         </section>
 
         {/* Photo Album Section */}
