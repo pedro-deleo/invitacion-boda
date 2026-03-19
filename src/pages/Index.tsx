@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/carousel";
 import heroImage from "@/assets/wedding-hero.jpg";
 import bg1Mobile from "@/assets/bg-1.png";
+import flowerPattern from "@/assets/flower-pattern.svg";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
@@ -92,12 +93,23 @@ const Index = () => {
       section.style.transitionDelay = `${index * 140}ms`;
     });
 
+    let hasUserInteracted = false;
+
+    const revealSection = (section: Element) => {
+      section.classList.add("reveal-visible");
+      observer.unobserve(section);
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add("reveal-visible");
-          observer.unobserve(entry.target);
+
+          const section = entry.target as HTMLElement;
+          const skipInitial = section.dataset.revealSkipInitial === "true";
+          if (skipInitial && !hasUserInteracted) return;
+
+          revealSection(section);
         });
       },
       {
@@ -106,9 +118,40 @@ const Index = () => {
       }
     );
 
+    const revealSkippedSectionsIfVisible = () => {
+      if (!hasUserInteracted) return;
+
+      sections.forEach((section) => {
+        if (section.classList.contains("reveal-visible")) return;
+        if (section.dataset.revealSkipInitial !== "true") return;
+
+        const rect = section.getBoundingClientRect();
+        const triggerLine = window.innerHeight * 0.88;
+        const isInViewport = rect.top <= triggerLine && rect.bottom >= 0;
+
+        if (isInViewport) {
+          revealSection(section);
+        }
+      });
+    };
+
+    const onFirstInteraction = () => {
+      hasUserInteracted = true;
+      revealSkippedSectionsIfVisible();
+    };
+
+    window.addEventListener("wheel", onFirstInteraction, { passive: true });
+    window.addEventListener("touchstart", onFirstInteraction, { passive: true });
+    window.addEventListener("keydown", onFirstInteraction);
+    window.addEventListener("scroll", revealSkippedSectionsIfVisible, { passive: true });
+
     sections.forEach((section) => observer.observe(section));
 
     return () => {
+      window.removeEventListener("wheel", onFirstInteraction);
+      window.removeEventListener("touchstart", onFirstInteraction);
+      window.removeEventListener("keydown", onFirstInteraction);
+      window.removeEventListener("scroll", revealSkippedSectionsIfVisible);
       sections.forEach((section) => {
         section.style.transitionDelay = "";
       });
@@ -133,16 +176,23 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-wedding-background">
+    <div
+      className="min-h-screen bg-wedding-background"
+      style={{
+        backgroundImage: `linear-gradient(hsl(var(--wedding-background) / 0.40), hsl(var(--wedding-background) / 0.40)), url(${flowerPattern})`,
+        backgroundRepeat: "no-repeat, repeat",
+        backgroundSize: "cover, 320px",
+        backgroundBlendMode: "normal, multiply",
+      }}
+    >
       {/* Intro Section */}
       <section
-        className="reveal-on-scroll relative h-screen flex items-start justify-center bg-cover bg-center pt-20 md:pt-28"
-        data-reveal
+        className="relative h-screen flex items-start justify-center bg-cover bg-center pt-20 md:pt-28"
         style={{
           backgroundImage: `url(${isMobile ? bg1Mobile : bg1Mobile})`,
         }}
       >
-        <div className="absolute top-0 left-1/2 z-10 w-full -translate-x-1/2 pt-6 md:pt-10 text-center text-white animate-fade-in">
+        <div className="absolute top-0 left-1/2 z-10 w-full -translate-x-1/2 pt-6 md:pt-10 text-center text-white">
           <div className="mb-8">
             <p className="font-rouge text-8xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-[9rem] leading-none">Reyna</p>
             <p className="font-rouge text-8xl sm:text-8xl md:text-8xl lg:text-9xl xl:text-[9rem] leading-none">&</p>
@@ -164,16 +214,18 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Invitation Section */}
-      <section className="reveal-on-scroll text-center py-14 px-6" data-reveal>
-        <p className="font-rouge text-6xl md:text-7xl font-bold text-wedding-text-light leading-tight md:leading-none max-w-3xl mx-auto">
-          <span className="block md:inline">Te invitamos a</span>{" "}
-          <span className="block md:inline">celebrar nuestra boda</span>
-        </p>
-      </section>
+
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-16">
+
+        {/* Invitation Section */}
+        <section className="reveal-on-scroll text-center py-14 px-6" data-reveal data-reveal-skip-initial="true">
+          <p className="font-rouge text-5xl md:text-6xl font-bold text-wedding-text-light leading-tight md:leading-none max-w-3xl mx-auto">
+            <span className="block md:inline">Tenemos el honor de invitarlos a ser partícipes</span>{" "}
+            <span className="block md:inline">de nuestra unión en matrimonio:</span>
+          </p>
+        </section>
         {/* Wedding Details */}
         <section className="reveal-on-scroll grid md:grid-cols-2 gap-8 mb-20" data-reveal>
           <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
@@ -317,6 +369,23 @@ const Index = () => {
               ) : null}
               <p className="text-white/80 mt-4 text-sm">
                 Responder tu asistencia antes del 30 de marzo, 2026.
+              </p>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Mesa de regalos Section */}
+        <section className="reveal-on-scroll text-center mb-20" data-reveal>
+          <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic">
+            <CardContent className="p-12">
+              <Heart className="w-12 h-12 mx-auto mb-6 text-white" />
+              <h2 className="font-serif text-3xl font-bold text-white mb-6">
+                Mesa de regalos
+              </h2>
+              <p className="text-white/90 mb-8 text-lg">
+                El mejor regalo es contar con tu presencia en este día tan
+                especial para nosotros. Si deseas apoyarnos con un obsequio,
+                con mucho cariño lo recibiremos únicamente en sobre el día del evento.
               </p>
             </CardContent>
           </Card>
