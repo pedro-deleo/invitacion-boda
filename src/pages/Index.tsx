@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import {
   Heart,
+  Flower2,
+  Sparkles,
   MapPin,
   Clock,
   Mail,
@@ -22,6 +24,7 @@ import {
 import heroImage from "@/assets/wedding-hero.jpg";
 import bg1Mobile from "@/assets/bg-1.png";
 import flowerPattern from "@/assets/flower-pattern.svg";
+import flowerIcon from "@/assets/flower.svg";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
@@ -207,7 +210,7 @@ const Index = () => {
         <div className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 md:bottom-14">
           <Badge
             variant="secondary"
-            className="px-6 py-3 text-wedding-text text-lg font-medium bg-wedding-background backdrop-blur-sm border-white/20"
+            className="px-6 py-3 text-wedding-text text-lg font-medium font-serif bg-wedding-background backdrop-blur-sm border-white/20"
           >
             Abril 26, 2026
           </Badge>
@@ -239,7 +242,7 @@ const Index = () => {
               <div className="space-y-3 text-wedding-text-light">
                 <div className="flex items-center">
                   <Clock className="w-5 h-5 mr-3" />
-                  <span>3:45 PM</span>
+                  <span>4:00 PM</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="w-5 h-5 mr-3" />
@@ -265,7 +268,7 @@ const Index = () => {
           <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
             <CardContent className="p-8">
               <div className="flex items-center mb-6">
-                <Heart className="w-8 h-8 text-wedding-primary mr-4" />
+                <Sparkles className="w-8 h-8 text-wedding-primary mr-4" />
                 <h3 className="font-serif text-2xl font-semibold text-wedding-text">
                   Recepción
                 </h3>
@@ -304,9 +307,6 @@ const Index = () => {
             <h2 className="font-serif text-4xl font-bold text-wedding-text mb-4">
               Álbum de Fotos
             </h2>
-            <p className="text-wedding-text-light max-w-2xl mx-auto">
-              Recuerdos especiales de nuestro viaje juntos hasta ahora.
-            </p>
           </div>
           
           <div className="relative max-w-5xl mx-auto">
@@ -344,11 +344,37 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Versiculo */}
+        <section className="reveal-on-scroll text-center mb-20" data-reveal>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-wedding-text mb-6"></h2>
+          <p className="text-5xl md:text-6xl font-rouge font-bold text-wedding-text-light max-w-2xl mx-auto leading-relaxed">
+            "Las muchas aguas no pueden apagar el amor, ni los ríos lo anegarán"
+          </p>
+          <p className="text-4xl font-rouge font-bold text-wedding-text-light max-w-2xl mx-auto leading-relaxed"> Cantares 8:7</p>
+        </section>
+
+        {/* Mesa de regalos Section */}
+        <section className="reveal-on-scroll text-center mb-20" data-reveal>
+          <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic">
+            <CardContent className="p-12">
+              <Mail className="w-12 h-12 mx-auto mb-6 text-white" />
+              <h2 className="font-serif text-3xl font-bold text-white mb-6">
+                Sugerencia de Regalo
+              </h2>
+              <p className="text-white/90 mb-8 text-lg">
+                El mejor regalo es contar con tu presencia en este día tan
+                especial para nosotros. Si deseas apoyarnos con un obsequio,
+                con mucho cariño lo recibiremos en sobre el día del evento.
+              </p>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* RSVP Section */}
         <section className="reveal-on-scroll text-center mb-20" data-reveal>
           <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic">
             <CardContent className="p-12">
-              <Heart className="w-12 h-12 mx-auto mb-6 text-white" />
+              <img src={flowerIcon} alt="flor" className="w-12 h-12 mx-auto mb-6" style={{ filter: "brightness(0) invert(1)" }} />
               <h2 className="font-serif text-3xl font-bold text-white mb-6">
                 Confirma tu asistencia
               </h2>
@@ -368,36 +394,10 @@ const Index = () => {
                 <p className="text-red-100 mt-4 text-sm font-medium">{rsvpError}</p>
               ) : null}
               <p className="text-white/80 mt-4 text-sm">
-                Responder tu asistencia antes del 30 de marzo, 2026.
+                Responder tu asistencia lo antes posible
               </p>
             </CardContent>
           </Card>
-        </section>
-
-        {/* Mesa de regalos Section */}
-        <section className="reveal-on-scroll text-center mb-20" data-reveal>
-          <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic">
-            <CardContent className="p-12">
-              <Heart className="w-12 h-12 mx-auto mb-6 text-white" />
-              <h2 className="font-serif text-3xl font-bold text-white mb-6">
-                Mesa de regalos
-              </h2>
-              <p className="text-white/90 mb-8 text-lg">
-                El mejor regalo es contar con tu presencia en este día tan
-                especial para nosotros. Si deseas apoyarnos con un obsequio,
-                con mucho cariño lo recibiremos únicamente en sobre el día del evento.
-              </p>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Versiculo */}
-        <section className="reveal-on-scroll text-center mb-20" data-reveal>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-wedding-text mb-6"></h2>
-          <p className="text-5xl md:text-6xl font-rouge font-bold text-wedding-text-light max-w-2xl mx-auto leading-relaxed">
-            "Todo lo hizo hermoso en su tiempo"
-          </p>
-          <p className="text-4xl font-rouge font-bold text-wedding-text-light max-w-2xl mx-auto leading-relaxed"> Eclesiastes 3:11</p>
         </section>
       </div>
 
@@ -422,8 +422,8 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="bg-wedding-text text-white py-12 text-center">
-        <Heart className="w-8 h-8 mx-auto mb-4 text-red-500 fill-current" />
-        <p className="text-sm md:text-base font-light">Hecho con amor por  Reyna & Pedro</p>
+        <Heart className="w-8 h-8 mx-auto mb-4 text-white fill-current" />
+        <p className="font-serif text-sm md:text-base font-light">Hecho con amor por  Reyna & Pedro</p>
       </footer>
     </div>
   );
