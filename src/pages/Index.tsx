@@ -226,7 +226,7 @@ const Index = () => {
         <section className="reveal-on-scroll text-center py-14 px-6" data-reveal data-reveal-skip-initial="true">
           <p className="font-rouge text-5xl md:text-6xl font-bold text-wedding-text-light leading-tight md:leading-none max-w-3xl mx-auto">
             <span className="block md:inline">Tenemos el honor de invitarlos a ser partícipes</span>{" "}
-            <span className="block md:inline">de nuestra unión en matrimonio:</span>
+            <span className="block md:inline">de nuestra unión en matrimonio en:</span>
           </p>
         </section>
         {/* Wedding Details */}
