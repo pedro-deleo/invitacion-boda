@@ -3,6 +3,7 @@ import {
   Heart,
   Flower2,
   Sparkles,
+  Gem,
   MapPin,
   Clock,
   Mail,
@@ -298,7 +299,20 @@ const Index = () => {
               </div>
             </CardContent>
           </Card>
+
+          <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
+            <CardContent className="p-8">
+              <div className="flex items-center mb-6">
+                <Gem className="w-8 h-8 text-wedding-primary mr-4" />
+                <h3 className="font-serif text-2xl font-semibold text-wedding-text">
+                  Etiqueta Formal
+                </h3>
+              </div>
+            </CardContent>
+          </Card>
         </section>
+
+
 
         {/* Photo Album Section */}
         <section className="reveal-on-scroll mb-20" data-reveal>
