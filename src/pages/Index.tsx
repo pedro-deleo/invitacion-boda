@@ -245,7 +245,7 @@ const Index = () => {
               &
             </p>
             <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">
-              Patricia Elizondo Armendariz
+              Patricia Elizondo Armendáriz
             </p>
 
             <div className="w-1/2 mx-auto border-t border-gray-500 my-3"></div>
