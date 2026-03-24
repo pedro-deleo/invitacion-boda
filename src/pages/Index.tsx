@@ -274,7 +274,7 @@ const Index = () => {
               <div className="flex items-center mb-6">
                 <Church className="w-8 h-8 text-wedding-primary mr-4" />
                 <h3 className="font-serif text-2xl font-semibold text-wedding-text">
-                  Iglesia
+                  Ceremonia
                 </h3>
               </div>
               <div className="space-y-3 text-wedding-text-light">
@@ -291,7 +291,7 @@ const Index = () => {
                       rel="noopener noreferrer"
                       className="text-wedding-primary underline hover:text-wedding-secondary"
                     >
-                      Union Church
+                      Iglesia Union Church
                       <br />
                       Oscar F. Castillon 200, Chepevera, 64060
                       <br />
