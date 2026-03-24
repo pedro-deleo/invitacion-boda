@@ -26,6 +26,8 @@ import heroImage from "@/assets/wedding-hero.jpg";
 import bg1Mobile from "@/assets/bg-1.png";
 import flowerPattern from "@/assets/flower-pattern.svg";
 import flowerIcon from "@/assets/flower.svg";
+import suitAndTie from "@/assets/suit-and-tie-outfit.png";
+import weddingDress from "@/assets/wedding-dress.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
@@ -224,12 +226,46 @@ const Index = () => {
       <div className="max-w-4xl mx-auto px-6 py-16">
 
         {/* Invitation Section */}
-        <section className="reveal-on-scroll text-center py-14 px-6" data-reveal data-reveal-skip-initial="true">
+        <section className="reveal-on-scroll text-center pt-14 pb-4 px-6" data-reveal data-reveal-skip-initial="true">
           <p className="font-rouge text-5xl md:text-6xl font-bold text-wedding-text-light leading-tight md:leading-none max-w-3xl mx-auto">
             <span className="block md:inline">Tenemos el honor de invitarlos a ser partícipes</span>{" "}
-            <span className="block md:inline">de nuestra unión en matrimonio en:</span>
+            <span className="block md:inline">de nuestra unión en matrimonio</span>
           </p>
         </section>
+
+        {/* Bendicion Section */}
+        <section className="reveal-on-scroll text-center pt-4 pb-14" data-reveal data-reveal-skip-initial="true">
+          <div className="bg-white rounded-2xl shadow-soft px-8 py-10 space-y-3">
+            <p className="font-rouge text-3xl md:text-6xl font-bold text-wedding-text-light leading-tight md:leading-none">
+              Con la bendición de Dios y de nuestros padres:</p>
+            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+              Americo Rafael López De Leija
+            </p>
+            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+              &
+            </p>
+            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+              Patricia Elizondo Armendariz
+            </p>
+
+            <div className="w-1/2 mx-auto border-t border-gray-500 my-3"></div>
+
+            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+                En memoria de
+              </p>
+            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+              Pedro Elí de León Frausto
+            </p>
+            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+              presente en nuestros corazones
+            </p>
+            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">&</p>
+            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+              Marcela Cecilia Robledo García
+            </p>
+          </div>
+        </section>
+
         {/* Wedding Details */}
         <section className="reveal-on-scroll grid md:grid-cols-2 gap-8 mb-20" data-reveal>
           <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
@@ -305,8 +341,15 @@ const Index = () => {
               <div className="flex items-center mb-6">
                 <Gem className="w-8 h-8 text-wedding-primary mr-4" />
                 <h3 className="font-serif text-2xl font-semibold text-wedding-text">
-                  Etiqueta Formal
+                  Código de Vestimenta
                 </h3>
+              </div>
+              <div className="space-y-3 text-wedding-text-light">
+                <div className="flex items-center gap-6 justify-center">
+                  <img src={suitAndTie} alt="Traje formal" className="w-16 h-16 object-contain" />
+                  <img src={weddingDress} alt="Vestido de gala" className="w-16 h-16 object-contain" />
+                </div>
+                <p className="text-lg text-center">Etiqueta Formal</p>
               </div>
             </CardContent>
           </Card>
