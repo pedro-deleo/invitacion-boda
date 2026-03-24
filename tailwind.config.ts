@@ -74,8 +74,8 @@ export default {
 			fontFamily: {
 				serif: ['Playfair Display', 'serif'],
 				sans: ['Inter', 'sans-serif'],
-				'rouge': ['"Rouge Script"', 'cursive']
-
+				'rouge': ['"Rouge Script"', 'cursive'],
+				'cinzel': ['Cinzel', 'serif']
 			},
 			backgroundImage: {
 				'gradient-romantic': 'var(--gradient-romantic)',

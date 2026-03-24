@@ -241,7 +241,7 @@ const Index = () => {
 
         {/* Invitation Section */}
         <section className="reveal-on-scroll text-center pt-14 pb-4 px-6" data-reveal data-reveal-skip-initial="true">
-          <p className="font-rouge text-5xl md:text-6xl font-bold text-wedding-text-light leading-tight md:leading-none max-w-3xl mx-auto">
+          <p className="font-cinzel text-2xl md:text-3xl font-bold uppercase tracking-widest text-wedding-text-light leading-relaxed max-w-3xl mx-auto">
             <span className="block md:inline">Tenemos el honor de invitarlos a ser partícipes</span>{" "}
             <span className="block md:inline">de nuestra unión en matrimonio</span>
           </p>
@@ -283,7 +283,7 @@ const Index = () => {
         {/* Wedding Details */}
         <section className="grid md:grid-cols-2 gap-8 mb-20">
           <div className="reveal-on-scroll" data-reveal>
-          <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
+          <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in bg-white">
             <CardContent className="p-8">
               <div className="flex items-center mb-6">
                 <Church className="w-8 h-8 text-wedding-primary mr-4" />
@@ -323,7 +323,7 @@ const Index = () => {
           </div>
 
           <div className="reveal-on-scroll" data-reveal>
-          <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
+          <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in bg-white">
             <CardContent className="p-8">
               <div className="flex items-center mb-6">
                 <Sparkles className="w-8 h-8 text-wedding-primary mr-4" />
@@ -363,7 +363,7 @@ const Index = () => {
           </div>
 
           <div className="reveal-on-scroll" data-reveal>
-          <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
+          <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in bg-white">
             <CardContent className="p-8 text-center">
               <div className="mb-6">
                 <h3 className="font-serif text-2xl font-semibold text-wedding-text text-center">

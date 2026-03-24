@@ -8,44 +8,44 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 350 100% 98%;
-    --foreground: 340 20% 15%;
+    --background: 36 38% 91%;
+    --foreground: 44 20% 48%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 340 20% 15%;
+    --card: 30 22% 89%;
+    --card-foreground: 44 20% 48%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 340 20% 15%;
+    --popover: 30 22% 89%;
+    --popover-foreground: 44 20% 48%;
 
-    --primary: 340 65% 55%;
+    --primary: 44 20% 38%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 350 30% 95%;
-    --secondary-foreground: 340 20% 15%;
+    --secondary: 30 18% 78%;
+    --secondary-foreground: 44 20% 48%;
 
-    --muted: 350 20% 92%;
-    --muted-foreground: 340 10% 45%;
+    --muted: 30 18% 80%;
+    --muted-foreground: 44 15% 55%;
 
-    --accent: 45 90% 70%;
-    --accent-foreground: 340 20% 15%;
+    --accent: 44 25% 58%;
+    --accent-foreground: 44 20% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 350 20% 88%;
-    --input: 350 20% 88%;
-    --ring: 340 65% 55%;
+    --border: 30 18% 74%;
+    --input: 30 18% 74%;
+    --ring: 44 20% 48%;
 
     /* Wedding-specific design tokens */
-    --wedding-primary: 127 29% 62%;
-    --wedding-primary-light: 340 45% 75%;
-    --wedding-secondary: 127 14% 48%;    
-    --wedding-background: 132 54% 95%;
-    --wedding-text: 127 14% 44%;
-    --wedding-text-light: 340 10% 45%;
+    --wedding-primary: 44 20% 48%;
+    --wedding-primary-light: 44 25% 62%;
+    --wedding-secondary: 44 18% 56%;
+    --wedding-background: 36 38% 91%;
+    --wedding-text: 44 20% 48%;
+    --wedding-text-light: 44 20% 48%;
     
     /* Gradients */
-    --gradient-romantic: linear-gradient(135deg, hsl(var(--wedding-primary)), hsl(var(--wedding-secondary)));
+    --gradient-romantic: linear-gradient(135deg, hsl(44 20% 44%), hsl(44 20% 52%));
     --gradient-soft: linear-gradient(180deg, hsl(var(--wedding-background)), hsl(var(--wedding-primary)));
 
     /* Shadows */
