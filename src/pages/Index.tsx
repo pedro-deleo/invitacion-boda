@@ -82,10 +82,24 @@ const Index = () => {
 
   useEffect(() => {
     if (!carouselApi || photoCount <= 1) return;
-    const interval = setInterval(() => {
+
+    let interval = setInterval(() => {
       carouselApi.scrollNext();
-    }, 3500); // Change slide every 3.5 seconds
-    return () => clearInterval(interval);
+    }, 3500);
+
+    const resetTimer = () => {
+      clearInterval(interval);
+      interval = setInterval(() => {
+        carouselApi.scrollNext();
+      }, 3500);
+    };
+
+    carouselApi.on("pointerDown", resetTimer);
+
+    return () => {
+      clearInterval(interval);
+      carouselApi.off("pointerDown", resetTimer);
+    };
   }, [carouselApi, photoCount]);
 
   useEffect(() => {
