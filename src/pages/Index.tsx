@@ -237,11 +237,11 @@ const Index = () => {
 
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="max-w-4xl mx-auto px-6 py-6">
 
         {/* Invitation Section */}
-        <section className="reveal-on-scroll text-center pt-14 pb-4 px-6" data-reveal data-reveal-skip-initial="true">
-          <p className="font-cinzel text-2xl md:text-3xl font-bold uppercase tracking-widest text-wedding-text-light leading-relaxed max-w-3xl mx-auto">
+        <section className="reveal-on-scroll text-center pt-4 pb-4 px-6" data-reveal data-reveal-skip-initial="true">
+          <p className="font-rouge text-5xl md:text-6xl  text-wedding-text-light leading-tight md:leading-none max-w-3xl mx-auto">
             <span className="block md:inline">Tenemos el honor de invitarlos a ser partícipes</span>{" "}
             <span className="block md:inline">de nuestra unión en matrimonio</span>
           </p>
@@ -434,10 +434,10 @@ const Index = () => {
         {/* Versiculo */}
         <section className="reveal-on-scroll text-center mb-20" data-reveal>
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-wedding-text mb-6"></h2>
-          <p className="text-5xl md:text-6xl font-rouge font-bold text-wedding-text-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-5xl md:text-6xl font-rouge  text-wedding-text-light max-w-2xl mx-auto leading-relaxed">
             "Las muchas aguas no pueden apagar el amor, ni los ríos lo anegarán"
           </p>
-          <p className="text-4xl font-rouge font-bold text-wedding-text-light max-w-2xl mx-auto leading-relaxed"> Cantares 8:7</p>
+          <p className="text-4xl font-rouge  text-wedding-text-light max-w-2xl mx-auto leading-relaxed"> Cantares 8:7</p>
         </section>
 
         {/* Mesa de regalos Section */}
