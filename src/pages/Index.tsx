@@ -279,11 +279,15 @@ const Index = () => {
               </div>
               <div className="space-y-3 text-wedding-text-light">
                 <div className="flex items-center">
-                  <Clock className="w-5 h-5 mr-3" />
+                  <div className="w-8 h-8 flex items-center justify-center mr-4 shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
                   <span>4:00 PM</span>
                 </div>
-                <div className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-3" />
+                <div className="flex items-start">
+                  <div className="w-8 h-8 flex items-center justify-center mr-4 shrink-0 mt-0.5">
+                    <MapPin className="w-5 h-5" />
+                  </div>
                   <span>
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=Union+Church+Oscar+F.+Castillon+200,+Chepevera,+64060+Monterrey,+N.L."
@@ -315,11 +319,15 @@ const Index = () => {
               </div>
               <div className="space-y-3 text-wedding-text-light">
                 <div className="flex items-center">
-                  <Clock className="w-5 h-5 mr-3" />
+                  <div className="w-8 h-8 flex items-center justify-center mr-4 shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
                   <span>7:00 PM</span>
                 </div>
-                <div className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-3" />
+                <div className="flex items-start">
+                  <div className="w-8 h-8 flex items-center justify-center mr-4 shrink-0 mt-0.5">
+                    <MapPin className="w-5 h-5" />
+                  </div>
                   <span>
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=Las+Lomas+Eventos+Av.+Ignacio+Morones+Prieto+No.2808-Pte,+Del+Carmen,+64710+Monterrey,+N.L."
@@ -388,12 +396,15 @@ const Index = () => {
                   >
                     <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in group">
                       <CardContent className="p-0">
-                        <div className="aspect-[.8] overflow-hidden rounded-lg">
+                        <div className="aspect-[.8] overflow-hidden rounded-lg relative">
                           <img
                             src={`/photos/photo-${index + 1}.jpg`}
                             alt={`Foto de boda ${index + 1}`}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            draggable="false"
+                            onContextMenu={(e) => e.preventDefault()}
                           />
+                          <div className="absolute inset-0" onContextMenu={(e) => e.preventDefault()} />
                         </div>
                       </CardContent>
                     </Card>
@@ -425,7 +436,7 @@ const Index = () => {
               </h2>
               <p className="text-white/90 mb-8 text-lg">
                 El mejor regalo es contar con tu presencia en este día tan
-                especial para nosotros. Si deseas apoyarnos con un obsequio,
+                especial para nosotros, pero si deseas apoyarnos con un obsequio,
                 con mucho cariño lo recibiremos en un sobre el día del evento.
               </p>
             </CardContent>
