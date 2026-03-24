@@ -171,7 +171,7 @@ const Index = () => {
     const targetUrl = rsvpLinks[code];
 
     if (!targetUrl) {
-      setRsvpError("No encontramos tu codigo de invitacion. Revisa tu enlace.");
+      setRsvpError("No encontramos tu código de invitación. Revisa tu enlace.");
       return;
     }
 
@@ -238,36 +238,37 @@ const Index = () => {
           <div className="bg-white rounded-2xl shadow-soft px-8 py-10 space-y-3">
             <p className="font-rouge text-3xl md:text-6xl font-bold text-wedding-text-light leading-tight md:leading-none">
               Con la bendición de Dios y de nuestros padres:</p>
-            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
-              Americo Rafael López De Leija
+            <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">
+              Américo Rafael López De Leija
             </p>
-            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+            <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">
               &
             </p>
-            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+            <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">
               Patricia Elizondo Armendariz
             </p>
 
             <div className="w-1/2 mx-auto border-t border-gray-500 my-3"></div>
 
-            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+            <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">
                 En memoria de
               </p>
-            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+            <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">
               Pedro Elí de León Frausto
             </p>
-            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+            <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">
               presente en nuestros corazones
             </p>
-            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">&</p>
-            <p className="font-rouge text-3xl md:text-4xl  text-wedding-text leading-tight">
+            <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">&</p>
+            <p className="font-rouge text-2xl md:text-3xl  text-wedding-text-light leading-tight">
               Marcela Cecilia Robledo García
             </p>
           </div>
         </section>
 
         {/* Wedding Details */}
-        <section className="reveal-on-scroll grid md:grid-cols-2 gap-8 mb-20" data-reveal>
+        <section className="grid md:grid-cols-2 gap-8 mb-20">
+          <div className="reveal-on-scroll" data-reveal>
           <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
             <CardContent className="p-8">
               <div className="flex items-center mb-6">
@@ -301,7 +302,9 @@ const Index = () => {
               </div>
             </CardContent>
           </Card>
+          </div>
 
+          <div className="reveal-on-scroll" data-reveal>
           <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
             <CardContent className="p-8">
               <div className="flex items-center mb-6">
@@ -335,12 +338,13 @@ const Index = () => {
               </div>
             </CardContent>
           </Card>
+          </div>
 
+          <div className="reveal-on-scroll" data-reveal>
           <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <Gem className="w-8 h-8 text-wedding-primary mr-4" />
-                <h3 className="font-serif text-2xl font-semibold text-wedding-text">
+            <CardContent className="p-8 text-center">
+              <div className="mb-6">
+                <h3 className="font-serif text-2xl font-semibold text-wedding-text text-center">
                   Código de Vestimenta
                 </h3>
               </div>
@@ -353,6 +357,7 @@ const Index = () => {
               </div>
             </CardContent>
           </Card>
+          </div>
         </section>
 
 
@@ -381,7 +386,7 @@ const Index = () => {
                     key={index} 
                     className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
                   >
-                    <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 group">
+                    <Card className="shadow-soft hover:shadow-romantic transition-all duration-300 animate-scale-in group">
                       <CardContent className="p-0">
                         <div className="aspect-[.8] overflow-hidden rounded-lg">
                           <img
@@ -412,7 +417,7 @@ const Index = () => {
 
         {/* Mesa de regalos Section */}
         <section className="reveal-on-scroll text-center mb-20" data-reveal>
-          <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic">
+          <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic animate-scale-in">
             <CardContent className="p-12">
               <Mail className="w-12 h-12 mx-auto mb-6 text-white" />
               <h2 className="font-serif text-3xl font-bold text-white mb-6">
@@ -421,7 +426,7 @@ const Index = () => {
               <p className="text-white/90 mb-8 text-lg">
                 El mejor regalo es contar con tu presencia en este día tan
                 especial para nosotros. Si deseas apoyarnos con un obsequio,
-                con mucho cariño lo recibiremos en sobre el día del evento.
+                con mucho cariño lo recibiremos en un sobre el día del evento.
               </p>
             </CardContent>
           </Card>
@@ -429,7 +434,7 @@ const Index = () => {
 
         {/* RSVP Section */}
         <section className="reveal-on-scroll text-center mb-20" data-reveal>
-          <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic">
+          <Card className="max-w-2xl mx-auto shadow-romantic bg-gradient-romantic animate-scale-in">
             <CardContent className="p-12">
               <img src={flowerIcon} alt="flor" className="w-12 h-12 mx-auto mb-6" style={{ filter: "brightness(0) invert(1)" }} />
               <h2 className="font-serif text-3xl font-bold text-white mb-6">
@@ -451,7 +456,7 @@ const Index = () => {
                 <p className="text-red-100 mt-4 text-sm font-medium">{rsvpError}</p>
               ) : null}
               <p className="text-white/80 mt-4 text-sm">
-                Responder tu asistencia lo antes posible
+                Responde tu asistencia lo antes posible
               </p>
             </CardContent>
           </Card>
